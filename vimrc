@@ -12,8 +12,6 @@ set title
 set cursorline
 set laststatus=2
 set cmdheight=2
-set backupdir=~/.vim/backup
-set undodir=~/.vim/undo
 set confirm
 set hidden
 set autoread
@@ -33,5 +31,4 @@ set sw=4
 set ts=4
 set sw=4
 set expandtab
-helptags ~/.vim/doc/
 set helplang=ja,en
