@@ -32,3 +32,28 @@ set ts=4
 set sw=4
 set expandtab
 set helplang=ja,en
+"以下、マッピング設定
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sw <C-w>w
+nnoremap sH <C-w>H
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sr <C-w>r
+nnoremap so <C-w>_<C-w>|
+nnoremap s= <C-w>=
+nnoremap s> <C-w>>
+nnoremap s< <C-w><
+nnoremap s+ <C-w>+
+nnoremap s- <C-w>-
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
