@@ -32,6 +32,46 @@ set ts=4
 set sw=4
 set expandtab
 set helplang=ja,en
+
+""dein Scripts-----------------------------
+if &compatible
+    set nocompatible
+endif
+"deinに関するファイルを置くディレクトリを指定
+let s:deinDir = expand('~/.vim/dein')
+"dein.vimまでのパスを指定
+let s:deinRepoDir = s:deinDir . '/repos/github.com/Shougo/dein.vim'
+"dein.vimが存在しなければ、if文の中身を実行
+if &runtimepath !~# 'dein.vim'
+    if !isdirectory(s:deinRepoDir)
+        execute '!git clone https://github.com/Shougo/dein.vim' s:deinRepoDir
+    endif
+    execute 'set runtimepath^=' . fnamemodify(s:deinRepoDir, ':p')
+endif
+"deinの起動
+if dein#load_state(s:deinDir)
+    call dein#begin(s:deinDir)
+    "rcDirはdein.toml, dein_lazy.tomlファイルを置いてある場所を指定している
+    let g:rcDir = expand('~/.vim/dein')
+    let s:toml = g:rcDir . '/dein.toml'
+    "dein_lazy.tomlを使う場合は下の1行をコメント解除する
+    let s:lazy_toml = g:rcDir . '/dein_lazy.toml'
+    "tomlファイルを読み込む
+    call dein#load_toml(s:toml, {'lazy': 0})
+    "dein_lazy.tomlを使う場合は、下の1行をコメント解除する
+    call dein#load_toml(s:lazy_toml, {'lazy':1})
+    "設定の終了
+    call dein#end()
+    call dein#save_state()
+endif
+filetype plugin indent on
+syntax enable
+if dein#check_install()
+    call dein#install()
+endif
+hi Pmenu ctermbg=0 ctermfg=11
+hi PmenuSel ctermbg=8 ctermfg=11
+inoremap <expr>"\<CR>" deoplete#pumvisible() ? "\<CR>" : deoplete#popup_close()
 "以下、マッピング設定
 nnoremap s <Nop>
 nnoremap sj <C-w>j
