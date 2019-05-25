@@ -32,6 +32,7 @@ set ts=4
 set sw=4
 set expandtab
 set helplang=ja,en
+set mouse=a
 
 ""dein Scripts-----------------------------
 if &compatible
@@ -96,4 +97,5 @@ nnoremap sp gT
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap ss :<C-u>sp<CR>
-nnoremap sv :<C-u>vs<CR>
+inoremap sv :<C-u>vs<CR>
+nnoremap r <C-r>
