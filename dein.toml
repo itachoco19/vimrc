@@ -19,26 +19,9 @@ hook_post_update = '''
 [[plugins]]
     repo = 'roxma/vim-hug-neovim-rpc'
     hook_add = '''
-        let g:python3_host_prog= '/home/itachoco/.pyenv/shims/python3'
+        let g:python_host_prog = $HOME . '/.pyenv/shims/python'
     '''
 [[plugins]]
     repo = 'roxma/nvim-yarp'
     hook_add = '''
-    '''
-
-[[plugins]]
-    repo = 'Shougo/deoplete.nvim'
-    hook_add = '''
-        let g:deoplete#enable_at_startup = 1
-        let g:deoplete#auto_complete_delay = 0
-        let g:deoplete#auto_complete_start_length = 1
-        let g:deoplete#enable_smart_case = 1
-        let g:deoplete#file#enable_buffer_path = 1
-        set completeopt-=preview
-    '''
-
-[[plugins]]
-    repo = 'cohama/lexima.vim'
-    hook_add = '''
-        let g:lexima_nvim_accept_pum_with_enter = 1
     '''
