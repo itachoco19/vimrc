@@ -54,7 +54,8 @@
         let g:LanguageClient_autoStart = 1
         let g:LanguageClient_hoverPreview = "Never"
         inoremap <silent><expr><C-j> LanguageClient#textDocument_signatureHelp()
-        nnoremap <silent> <C-r> :call LanguageClient#textDocument_rename()<CR>
+        nnoremap <silent><C-r> :call LanguageClient#textDocument_rename()<CR>
+        command! Def :call LanguageClient#textDocument_definition()
 
         set completefunc=deoplete#complete
     '''
