@@ -97,5 +97,5 @@ nnoremap sp gT
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap ss :<C-u>sp<CR>
-inoremap sv :<C-u>vs<CR>
+nnoremap sv :<C-u>vs<CR>
 nnoremap r <C-r>
