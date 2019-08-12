@@ -1,2 +1,3 @@
 自分用vim設定ファイル
-自分用vim plugins 設定ファイル
+自分用vim plugins設定ファイル
+deopleteを使うためにpythonのyarpは使用してはいけない
