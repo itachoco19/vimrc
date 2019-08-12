@@ -20,6 +20,7 @@ hook_post_update = '''
     repo = 'roxma/vim-hug-neovim-rpc'
     hook_add = '''
         let g:python3_host_prog = $PYENV_ROOT . "/shims/python3"
+        let g:pythonx_host_prog = $PYENV_ROOT . "/shims/python"
     '''
 [[plugins]]
     repo = 'roxma/nvim-yarp'
