@@ -77,6 +77,8 @@
         let g:lexima_no_default_rules = 1
         call lexima#set_default_rules()
         call lexima#insmode#map_hook('before', '<CR>', '')
+        inoremap <expr>"\<CR>" deoplete#pumvisible() ? "\<CR>" : deoplete#popup_close()
+
     '''
     on_event = "VimEnter"
 

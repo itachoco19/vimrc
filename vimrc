@@ -72,7 +72,6 @@ if dein#check_install()
 endif
 hi Pmenu ctermbg=0 ctermfg=11
 hi PmenuSel ctermbg=8 ctermfg=11
-inoremap <expr>"\<CR>" deoplete#pumvisible() ? "\<CR>" : deoplete#popup_close()
 "以下、マッピング設定
 nnoremap s <Nop>
 nnoremap sj <C-w>j
