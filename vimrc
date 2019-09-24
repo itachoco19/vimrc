@@ -23,7 +23,7 @@ set noignorecase
 set smartcase
 set wrapscan
 set clipboard&
-set clipboard=unnamedplus,autoselect
+set clipboard^=unnamedplus,autoselect
 set scrolloff=8
 set sidescrolloff=8
 set sidescroll=1
