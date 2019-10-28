@@ -19,17 +19,12 @@
         "<C-Space>で補完のポップアップを表示する。
         inoremap <silent><expr> <C-Space> pumvisible() ? deoplete#cancel_popup() : deoplete#manual_complete()
         "左右キーを使うとポップアップを消すことができる。
-        inoremap <silent><expr> <Left>  Close_left()
-        inoremap <silent><expr> <Right> Close_right()
+        inoremap <silent><expr> <Left> pumvisible() ? Close_and_Move("\<Left>") : "\<Left>"
+        inoremap <silent><expr> <Right> pumvisible() ? Close_and_Move("\<Right>") : "\<Right>"
 
-        function! Close_left() abort
-            call deoplete#smart_close_popup()
-            return "\<Left>"
-        endfunction
-
-        function! Close_right() abort
+        function! Close_and_Move(head)
             call deoplete#close_popup()
-            return "\<Right>"
+            return a:head
         endfunction
     '''
 
