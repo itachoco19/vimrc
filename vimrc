@@ -33,7 +33,7 @@ set sw=4
 set expandtab
 set helplang=ja,en
 set mouse=a
-set visualbell t_vb
+set visualbell t_vb=
 
 ""dein Scripts-----------------------------
 if &compatible
