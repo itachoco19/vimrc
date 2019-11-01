@@ -33,6 +33,8 @@ set sw=4
 set expandtab
 set helplang=ja,en
 set mouse=a
+set visualbell t_vb= 
+
 "以下、マッピング設定
 nnoremap s <Nop>
 nnoremap sj <C-w>j
