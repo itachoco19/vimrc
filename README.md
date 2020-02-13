@@ -3,4 +3,4 @@
 自分用vim plugins設定ファイル
 deopleteを使うためにpythonのyarpは使用してはいけない
 clangdについては/usr/binにclangdのリンクを作ったほうが良いと思われる
-
+ubuntuのカラーファイルもある
