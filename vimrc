@@ -99,3 +99,6 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap r <C-r>
+nnoremap / :noh<CR>/
+nnoremap ? :noh<CR>? 
+nnoremap <silent>\ :noh<CR>
