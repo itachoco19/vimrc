@@ -26,3 +26,8 @@ hook_post_update = '''
     repo = 'roxma/nvim-yarp'
     hook_add = '''
     '''
+[[plugins]]
+    repo = 'scrooloose/nerdtree'
+    hook_add = '''
+        autocmd VimEnter * execute 'NERDTree'
+    '''
