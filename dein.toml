@@ -29,5 +29,8 @@ hook_post_update = '''
 [[plugins]]
     repo = 'scrooloose/nerdtree'
     hook_add = '''
-        autocmd VimEnter * execute 'NERDTree'
+        let g:NERDTreeMouseMode = 1
+        let g:NERDTreeShowHiden = 1
+        nnoremap <silent>sd :NERDTreeToggle<CR>
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     '''
