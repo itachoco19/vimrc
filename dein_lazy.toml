@@ -42,8 +42,9 @@
         let g:LanguageClient_loadSettings = 1
         let g:LanguageClient_hasSnippetSupport = 0
         let g:LanguageClient_autoStart = 1
-        let g:LanguageClient_hoverPreview = "Never"
-        inoremap <silent><expr><C-j> LanguageClient#textDocument_signatureHelp()
+        let g:LanguageClient_usePopupHover = 1
+        let g:LanguageClient_hoverPreview = 'Always'
+        inoremap <silent><expr><C-j> LanguageClient#textDocument_hover()
         nnoremap <silent><C-r> :call LanguageClient#textDocument_rename()<CR>
         command! Def :call LanguageClient#textDocument_definition()
 
