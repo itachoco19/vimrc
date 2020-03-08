@@ -1,9 +1,4 @@
 [[plugins]]
-    repo = 'Shougo/denite.nvim'
-    on_event = "VimEnter"
-    depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
-
-[[plugins]]
     repo = 'Shougo/deoplete.nvim'
     on_event = "InsertEnter"
     hook_add = '''
@@ -37,18 +32,20 @@
     rev = 'next'
     depends = ['deoplete.nvim']
     build = 'bash install.sh'
+
     hook_add = '''
         set hidden
         let g:LanguageClient_serverCommands = {
             \'c' : ['clangd'],
-            \'cpp': ['clangd'],
+            \'cpp': ['clangd', '-compile-commands-dir', '~/'],
             \'python':['pyls']
         \}
         let g:LanguageClient_loadSettings = 1
         let g:LanguageClient_hasSnippetSupport = 0
         let g:LanguageClient_autoStart = 1
-        let g:LanguageClient_hoverPreview = "Never"
-        inoremap <silent><expr><C-j> LanguageClient#textDocument_signatureHelp()
+        let g:LanguageClient_usePopupHover = 1
+        let g:LanguageClient_hoverPreview = 'Always'
+        inoremap <silent><expr><C-j> LanguageClient#textDocument_hover()
         nnoremap <silent><C-r> :call LanguageClient#textDocument_rename()<CR>
         command! Def :call LanguageClient#textDocument_definition()
 
