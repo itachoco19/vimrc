@@ -1,6 +1,17 @@
 #!/usr/bin/env sh
 
 server='/home/itachoco/lsp'
+jdtls_version='0.52.0'
+filename="jdt-language-server-${jdtls_version}-202003042214.tar.gz"
+
+if [ ! -e $server/eclipse.jdt.ls/ ]; then
+    mkdir eclipse.jdt.ls
+    if [ ! -e $filename ]; then
+        curl -L https://download.eclipse.org/jdtls/milestones/$jdtls_version/$filename -O
+    fi
+    tar -xzf $filename -C ./eclipse.jdt.ls
+    rm $filename
+fi
 
 java \
     -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044 \
@@ -11,7 +22,7 @@ java \
     -Dlog.level=ALL\
     -noverify \
     -Xms1G \
-    -jar $server/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar \
+    -jar $server/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.700.v20200207-2156.jar \
     -configuration $server/eclipse.jdt.ls/config_linux/ \
     -data . \
     "$@"
