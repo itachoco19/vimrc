@@ -30,7 +30,6 @@
 [[plugins]]
     repo = 'autozimu/LanguageClient-neovim'
     rev = 'next'
-    depends = ['deoplete.nvim']
     build = 'bash install.sh'
 
     hook_add = '''
