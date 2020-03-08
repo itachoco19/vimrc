@@ -55,6 +55,9 @@ if dein#load_state(s:deinDir)
     call dein#begin(s:deinDir)
     "rcDirはdein.toml, dein_lazy.tomlファイルを置いてある場所を指定している
     let g:rcDir = expand('~/.vim/dein')
+    "前提pluginを読み込む
+    let s:base = g:rcDir . '/base.toml'
+    "Vim起動時にpluginを読み込む
     let s:toml = g:rcDir . '/dein.toml'
     "dein_lazy.tomlを使う場合は下の1行をコメント解除する
     let s:lazy_toml = g:rcDir . '/dein_lazy.toml'
