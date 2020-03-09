@@ -61,6 +61,8 @@ if dein#load_state(s:deinDir)
     let s:toml = g:rcDir . '/dein.toml'
     "dein_lazy.tomlを使う場合は下の1行をコメント解除する
     let s:lazy_toml = g:rcDir . '/dein_lazy.toml'
+    "base.tomlを読み込む
+    call dein#load_toml(s:base,{'lazy': 0})
     "tomlファイルを読み込む
     call dein#load_toml(s:toml, {'lazy': 0})
     "dein_lazy.tomlを使う場合は、下の1行をコメント解除する
