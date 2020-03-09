@@ -28,32 +28,6 @@
     on_ft = ['html', 'xml']
 
 [[plugins]]
-    repo = 'autozimu/LanguageClient-neovim'
-    rev = 'next'
-    build = 'bash install.sh'
-
-    hook_add = '''
-        set hidden
-        let g:LanguageClient_serverCommands = {
-            \'c' : ['clangd'],
-            \'cpp': ['clangd', '-compile-commands-dir', '~/'],
-            \'python':['pyls']
-        \}
-        let g:LanguageClient_loadSettings = 1
-        let g:LanguageClient_hasSnippetSupport = 0
-        let g:LanguageClient_autoStart = 1
-        let g:LanguageClient_usePopupHover = 1
-        let g:LanguageClient_hoverPreview = 'Always'
-        inoremap <silent><expr><C-j> LanguageClient#textDocument_hover()
-        nnoremap <silent><C-r> :call LanguageClient#textDocument_rename()<CR>
-        command! Def :call LanguageClient#textDocument_definition()
-
-        set completefunc=deoplete#complete
-    '''
-    depends = ['deoplete.nvim']
-    on_event = "VimEnter"
-
-[[plugins]]
     repo = 'Shougo/neoinclude.vim'
     depends = ['deoplete.nvim']
     on_source = ['deoplete.nvim']
