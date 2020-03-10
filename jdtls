@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-server='/home/itachoco/lsp'
-jdtls_version='0.52.0'
+server="${HOME}/lsp"
+jdtls_version="0.52.0"
 filename="jdt-language-server-${jdtls_version}-202003042214.tar.gz"
 
 if [ ! -e $server/eclipse.jdt.ls/ ]; then
