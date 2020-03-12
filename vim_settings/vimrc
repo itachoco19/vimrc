@@ -82,7 +82,11 @@ hi PmenuSel ctermbg=8 ctermfg=11
 "vim終了時、ヤンクした文字列をクリップボードに貼り付け
 augroup paste_clipboard
     autocmd!
-    autocmd VimLeave * call system("xclip -o -selection CLIPBOARD | xclip -selection CLIPBOARD")
+    if executable('xclip')
+        autocmd VimLeave * call system("xclip -i -selection c", getreg('+'))
+    elseif executable('xsel')
+        autocmd VimLeave * call system("xsel -ib", getreg('+'))
+    endif
 augroup END
 
 "以下、マッピング設定
