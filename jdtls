@@ -4,13 +4,9 @@ server="${HOME}/lsp/eclipse.jdt.ls"
 jdtls_version="0.52.0"
 filename="jdt-language-server-${jdtls_version}-202003042214.tar.gz"
 
-if [ ! -e $server ]; then
+if [ ! -e $server/plugins/org.eclipse.equinox.launcher_1.5.700.v20200207-2156.jar ]; then
     mkdir -p $server/
-    if [ ! -e $filename ]; then
-        curl -L https://download.eclipse.org/jdtls/milestones/$jdtls_version/$filename -O
-    fi
-    tar -xzf $filename -C $server
-    rm $filename
+    curl -L https://download.eclipse.org/jdtls/milestones/$jdtls_version/$filename | tar -xz -C $server
 fi
 
 java \
