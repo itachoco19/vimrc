@@ -86,6 +86,7 @@ augroup paste_clipboard
         autocmd VimLeave * call system("xclip -i -selection c", getreg('+'))
     elseif executable('xsel')
         autocmd VimLeave * call system("xsel -ib", getreg('+'))
+    else
     endif
 augroup END
 
