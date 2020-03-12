@@ -34,6 +34,3 @@
 
         set completefunc=deoplete#complete
     '''
-    depends = ['deoplete.nvim']
-    on_event = "VimEnter"
-
