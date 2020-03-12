@@ -23,7 +23,7 @@ set noignorecase
 set smartcase
 set wrapscan
 set clipboard&
-set clipboard^=unnamedplus,autoselect
+set clipboard^=unnamedplus
 set scrolloff=8
 set sidescrolloff=8
 set sidescroll=1
@@ -78,6 +78,18 @@ if dein#check_install()
 endif
 hi Pmenu ctermbg=0 ctermfg=11
 hi PmenuSel ctermbg=8 ctermfg=11
+
+"vim終了時、ヤンクした文字列をクリップボードに貼り付け
+augroup paste_clipboard
+    autocmd!
+    if executable('xclip')
+        autocmd VimLeave * call system("xclip -i -selection c", getreg('+'))
+    elseif executable('xsel')
+        autocmd VimLeave * call system("xsel -ib", getreg('+'))
+    else
+    endif
+augroup END
+
 "以下、マッピング設定
 nnoremap s <Nop>
 nnoremap sj <C-w>j
