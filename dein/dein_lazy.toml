@@ -2,11 +2,12 @@
     repo = 'Shougo/deoplete.nvim'
     on_event = "InsertEnter"
     hook_add = '''
+        "call deoplete#custom#option("auto_complete_delay", 0)
         let g:deoplete#enable_at_startup = 1
-        let g:deoplete#auto_complete_delay = 0
-        let g:deoplete#auto_complete_start_length = 1
-        let g:deoplete#enable_smart_case = 1
-        let g:deoplete#file#enable_buffer_path = 1
+        "let g:deoplete#auto_complete_delay = 0
+        "let g:deoplete#auto_complete_start_length = 1
+        "let g:deoplete#enable_smart_case = 1
+        "let g:deoplete#file#enable_buffer_path = 1
         set completeopt-=preview
         "<C-Space>のマッピングをつぶす
         imap <buffer> <Nul> <C-Space>
@@ -21,6 +22,14 @@
             call deoplete#close_popup()
             return a:head
         endfunction
+    '''
+    hook_done_update = '''
+        call deoplete#custom#option({ \
+        "auto_complete_delay" : 0, \
+        "auto_refresh_delay" : 0}, \
+        "complete_suffix" : false, \
+        "smart_case" : 1, \
+        })
     '''
 
 [[plugins]]
