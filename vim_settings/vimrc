@@ -34,6 +34,7 @@ set expandtab
 set helplang=ja,en
 set mouse=a
 set visualbell t_vb=
+set termwinkey=<A-c>
 
 ""dein Scripts-----------------------------
 if &compatible
@@ -119,3 +120,5 @@ nnoremap r <C-r>
 nnoremap / :noh<CR>/
 nnoremap ? :noh<CR>? 
 nnoremap <silent>\ :noh<CR>
+nnoremap sb :<C-u>bo term<CR>
+tnoremap <Esc> <A-c><S-n>
