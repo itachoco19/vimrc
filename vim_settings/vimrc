@@ -34,7 +34,6 @@ set expandtab
 set helplang=ja,en
 set mouse=a
 set visualbell t_vb=
-set termwinkey=<A-c>
 
 ""dein Scripts-----------------------------
 if &compatible
@@ -54,29 +53,36 @@ endif
 "deinの起動
 if dein#load_state(s:deinDir)
     call dein#begin(s:deinDir)
+
     "rcDirはdein.toml, dein_lazy.tomlファイルを置いてある場所を指定している
     let g:rcDir = expand('~/.vim/dein')
+
     "前提pluginを読み込む
     let s:base = g:rcDir . '/base.toml'
     "Vim起動時にpluginを読み込む
     let s:toml = g:rcDir . '/dein.toml'
     "dein_lazy.tomlを使う場合は下の1行をコメント解除する
     let s:lazy_toml = g:rcDir . '/dein_lazy.toml'
+
     "base.tomlを読み込む
     call dein#load_toml(s:base,{'lazy': 0})
     "tomlファイルを読み込む
     call dein#load_toml(s:toml, {'lazy': 0})
     "dein_lazy.tomlを使う場合は、下の1行をコメント解除する
     call dein#load_toml(s:lazy_toml, {'lazy':1})
+
     "設定の終了
     call dein#end()
     call dein#save_state()
 endif
+
 filetype plugin indent on
 syntax enable
 if dein#check_install()
     call dein#install()
 endif
+
+"補完用ウインドウの色設定
 hi Pmenu ctermbg=0 ctermfg=11
 hi PmenuSel ctermbg=8 ctermfg=11
 
@@ -120,5 +126,8 @@ nnoremap r <C-r>
 nnoremap / :noh<CR>/
 nnoremap ? :noh<CR>? 
 nnoremap <silent>\ :noh<CR>
+
+"ターミナル設定
+set termwinkey=<A-c>
 nnoremap sb :<C-u>bo term<CR>
 tnoremap <Esc> <A-c><S-n>
