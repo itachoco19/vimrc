@@ -35,6 +35,17 @@ set helplang=ja,en
 set mouse=a
 set visualbell t_vb=
 
+""pythonスクリプトに関する設定
+if !filereadable(expand("~/.vim/.vim_no_python"))
+    let s:virtual_env_path = ""
+    if !exists(s:virtual_env_path)
+        call system("python3 -m venv" . s:virtual_env_path)
+        call system("source " . virtual_env_path . "/bin/activate && pip install neovim")
+    endif
+    let g:python3_host_prog = s:virtual_env_path . "/bin/python"
+    let $PATH = s:virtual_env_path . "/bin:" . $PATH
+endif
+
 ""dein Scripts-----------------------------
 if &compatible
     set nocompatible
