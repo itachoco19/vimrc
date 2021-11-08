@@ -1,12 +1,8 @@
 [[plugins]]
     repo = 'Shougo/dein.vim'
-    hook_add = '''
-        let s:virtual_env_path = expand("")
-        let g:python3_host_prog = s:virtual_env_path . "/bin/python3"
-        let g:pythonx_host_prog = s:virtual_env_path . "/bin/python3"
-    '''
 
 [[plugins]]
     repo = 'roxma/vim-hug-neovim-rpc'
+
 [[plugins]]
     repo = 'roxma/nvim-yarp'
