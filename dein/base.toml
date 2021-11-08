@@ -1,8 +1,9 @@
 [[plugins]]
     repo = 'Shougo/dein.vim'
     hook_add = '''
-        let g:python3_host_prog = $PYENV_ROOT . "/versions/3.7.3/bin/python"
-        let g:pythonx_host_prog = $PYENV_ROOT . "/versions/3.7.3/bin/python"
+        let s:virtual_env_path = expand("")
+        let g:python3_host_prog = s:virtual_env_path . "/bin/python3"
+        let g:pythonx_host_prog = s:virtual_env_path . "/bin/python3"
     '''
 
 [[plugins]]
