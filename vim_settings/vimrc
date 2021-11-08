@@ -35,62 +35,68 @@ set helplang=ja,en
 set mouse=a
 set visualbell t_vb=
 
-""pythonスクリプトに関する設定
-if !filereadable(expand("~/.vim/.vim_no_python"))
-    let s:virtual_env_path = ""
-    if !exists(s:virtual_env_path)
-        call system("python3 -m venv" . s:virtual_env_path)
-        call system("source " . virtual_env_path . "/bin/activate && pip install neovim")
+"プラグインを使用しない場合、.vim_no_pluginファイルを作成すること
+if !filereadable("~/.vim/.vim_no_plugin")
+    "pythonスクリプトに関する設定
+    if !filereadable(expand("~/.vim/.vim_no_python"))
+        "使用する仮想環境のパス設定
+        let s:virtual_env_path = ""
+        "仮想環境が存在しなければ、仮想環境の作成とneovimパッケージのインストールを行う
+        if !exists(s:virtual_env_path)
+            call system("python3 -m venv" . s:virtual_env_path)
+            call system("source " . virtual_env_path . "/bin/activate && pip install neovim")
+        endif
+        let g:python3_host_prog = s:virtual_env_path . "/bin/python"
+        let $PATH = s:virtual_env_path . "/bin:" . $PATH
     endif
-    let g:python3_host_prog = s:virtual_env_path . "/bin/python"
-    let $PATH = s:virtual_env_path . "/bin:" . $PATH
-endif
 
-""dein Scripts-----------------------------
-if &compatible
-    set nocompatible
-endif
-"deinに関するファイルを置くディレクトリを指定
-let s:deinDir = expand('~/.vim/dein')
-"dein.vimまでのパスを指定
-let s:deinRepoDir = s:deinDir . '/repos/github.com/Shougo/dein.vim'
-"dein.vimが存在しなければ、if文の中身を実行
-if &runtimepath !~# 'dein.vim'
-    if !isdirectory(s:deinRepoDir)
-        execute '!git clone https://github.com/Shougo/dein.vim' s:deinRepoDir
+    ""dein Scripts-----------------------------
+    if &compatible
+        set nocompatible
     endif
-    execute 'set runtimepath^=' . fnamemodify(s:deinRepoDir, ':p')
-endif
-"deinの起動
-if dein#load_state(s:deinDir)
-    call dein#begin(s:deinDir)
+    "deinに関するファイルを置くディレクトリを指定
+    let s:deinDir = expand('~/.vim/dein')
+    "dein.vimまでのパスを指定
+    let s:deinRepoDir = s:deinDir . '/repos/github.com/Shougo/dein.vim'
+    "dein.vimが存在しなければ、if文の中身を実行
+    if &runtimepath !~# 'dein.vim'
+        if !isdirectory(s:deinRepoDir)
+            execute '!git clone https://github.com/Shougo/dein.vim' s:deinRepoDir
+        endif
+        execute 'set runtimepath^=' . fnamemodify(s:deinRepoDir, ':p')
+    endif
 
-    "rcDirはdein.toml, dein_lazy.tomlファイルを置いてある場所を指定している
-    let g:rcDir = expand('~/.vim/dein')
+    "deinの起動
+    if dein#load_state(s:deinDir)
+        call dein#begin(s:deinDir)
 
-    "前提pluginを読み込む
-    let s:base = g:rcDir . '/base.toml'
-    "Vim起動時にpluginを読み込む
-    let s:toml = g:rcDir . '/dein.toml'
-    "dein_lazy.tomlを使う場合は下の1行をコメント解除する
-    let s:lazy_toml = g:rcDir . '/dein_lazy.toml'
+        "rcDirはdein.toml, dein_lazy.tomlファイルを置いてある場所を指定している
+        let g:rcDir = expand('~/.vim/dein')
 
-    "base.tomlを読み込む
-    call dein#load_toml(s:base,{'lazy': 0})
-    "tomlファイルを読み込む
-    call dein#load_toml(s:toml, {'lazy': 0})
-    "dein_lazy.tomlを使う場合は、下の1行をコメント解除する
-    call dein#load_toml(s:lazy_toml, {'lazy':1})
+        "前提pluginを読み込む
+        let s:base = g:rcDir . '/base.toml'
+        "Vim起動時にpluginを読み込む
+        let s:toml = g:rcDir . '/dein.toml'
+        "dein_lazy.tomlを使う場合は下の1行をコメント解除する
+        let s:lazy_toml = g:rcDir . '/dein_lazy.toml'
 
-    "設定の終了
-    call dein#end()
-    call dein#save_state()
-endif
+        "base.tomlを読み込む
+        call dein#load_toml(s:base,{'lazy': 0})
+        "tomlファイルを読み込む
+        call dein#load_toml(s:toml, {'lazy': 0})
+        "dein_lazy.tomlを使う場合は、下の1行をコメント解除する
+        call dein#load_toml(s:lazy_toml, {'lazy':1})
 
-filetype plugin indent on
-syntax enable
-if dein#check_install()
-    call dein#install()
+        "設定の終了
+        call dein#end()
+        call dein#save_state()
+    endif
+
+    filetype plugin indent on
+    syntax enable
+    if dein#check_install()
+        call dein#install()
+    endif
 endif
 
 "補完用ウインドウの色設定
