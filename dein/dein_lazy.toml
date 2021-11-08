@@ -44,7 +44,7 @@
 [[plugins]]
     repo = 'cohama/lexima.vim'
     hook_add = '''
-        let g:lexima_nvim_accept_pum_with_enter = 1
+        let g:lexima_accept_pum_with_enter = 1
     '''
     hook_post_source = '''
         let g:lexima_no_default_rules = 1
