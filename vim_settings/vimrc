@@ -44,7 +44,7 @@ if !filereadable("~/.vim/.vim_no_plugin")
         "仮想環境が存在しなければ、仮想環境の作成とneovimパッケージのインストールを行う
         if !exists(s:virtual_env_path)
             call system("python3 -m venv" . s:virtual_env_path)
-            call system("source " . virtual_env_path . "/bin/activate && pip install neovim")
+            call system("source " . s:virtual_env_path . "/bin/activate && pip install neovim")
         endif
         let g:python3_host_prog = s:virtual_env_path . "/bin/python"
         let $PATH = s:virtual_env_path . "/bin:" . $PATH
