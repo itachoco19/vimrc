@@ -1,7 +1,4 @@
 [[plugins]]
-    repo = 'Shougo/dein.vim'
-
-[[plugins]]
     repo = 'scrooloose/nerdtree'
     hook_add = '''
         let g:NERDTreeMouseMode = 1
