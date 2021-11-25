@@ -97,6 +97,12 @@ if !filereadable("~/.vim/.vim_no_plugin")
     if dein#check_install()
         call dein#install()
     endif
+    augroup Vim_Start
+        autocmd!
+        autocmd VimEnter * NERDTreeToggle
+        autocmd VimEnter * wincmd p
+    augroup END
+
 endif
 
 "補完用ウインドウの色設定
@@ -112,12 +118,6 @@ augroup paste_clipboard
         autocmd VimLeave * call system("xsel -ib", getreg('+'))
     else
     endif
-augroup END
-
-augroup Vim_Start
-    autocmd!
-    autocmd VimEnter * NERDTreeToggle
-    autocmd VimEnter * wincmd p
 augroup END
 
 "以下、マッピング設定
